@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/passwordFragment">
+
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="com.example.passwordwallet.Fragments.PasswordFragment"
+        android:label="Password Wallet"
+        tools:layout="@layout/fragment_passwords_list" >
+        <action
+            android:id="@+id/action_passwordFragment_to_addNewPasswordFragment"
+            app:destination="@id/addNewPasswordFragment" />
+        <argument
+            android:name="login"
+            app:argType="string" />
+        <argument
+            android:name="passwd"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewPasswordFragment"
+        android:name="com.example.passwordwallet.Fragments.AddNewPasswordFragment"
+        android:label="Add new password"
+        tools:layout="@layout/add_new_password_f" >
+        <action
+            android:id="@+id/action_addNewPasswordFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
+        <argument
+            android:name="login"
+            app:argType="string" />
+        <argument
+            android:name="passwd"
+            app:argType="string" />
+    </fragment>
+</navigation>
