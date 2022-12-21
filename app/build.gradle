@@ -41,8 +41,37 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.5.2'
     implementation 'androidx.navigation:navigation-ui:2.5.2'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    testImplementation 'org.testng:testng:6.9.6'
+    testImplementation 'org.testng:testng:6.9.6'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    androidTestImplementation 'org.testng:testng:6.9.6'
+
+    // Core library
+    androidTestImplementation "androidx.test:core:1.5.0"
+
+    // AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation "androidx.test:runner:1.5.1"
+    androidTestImplementation "androidx.test:rules:1.5.0"
+
+    // Assertions
+    androidTestImplementation "androidx.test.ext:junit:1.1.4"
+    androidTestImplementation "androidx.test.ext:truth:1.5.0"
+
+    // Espresso dependencies
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.5.0"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:3.5.0"
+    androidTestImplementation "androidx.test.espresso:espresso-accessibility:3.5.0"
+    androidTestImplementation "androidx.test.espresso:espresso-web:3.5.0"
+    androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:3.5.0"
+
+    // The following Espresso dependency can be either "implementation",
+    // or "androidTestImplementation", depending on whether you want the
+    // dependency to appear on your APK’"s compile classpath or the test APK
+    // classpath.
+    androidTestImplementation "androidx.test.espresso:espresso-idling-resource:3.5.0"
+
+
 
     def room_version = "2.4.3"
 

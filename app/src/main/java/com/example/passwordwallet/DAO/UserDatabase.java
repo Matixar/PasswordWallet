@@ -5,9 +5,11 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
 //database class, database made with Android Room
-@Database(entities = {User.class, Password.class},exportSchema = false, version = 1)
+@Database(entities = {User.class, Password.class, IpAddress.class, LoginAttempt.class},exportSchema = false, version = 2)
+@TypeConverters({Converters.class})
 public abstract class UserDatabase extends RoomDatabase {
     //name of database
     private static final String DB_NAME = "user_db";
@@ -26,5 +28,7 @@ public abstract class UserDatabase extends RoomDatabase {
     //dao methods to use database in application
     public abstract UserDAO userDao();
     public abstract PasswordDAO passwordDao();
+    public abstract IpAddressDAO ipAddressDAO();
+    public abstract LoginAttemptDAO loginAttemptDAO();
 
 }

@@ -3,33 +3,29 @@ package com.example.passwordwallet;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import com.example.passwordwallet.DAO.Password;
-import com.example.passwordwallet.DAO.User;
-import com.example.passwordwallet.DAO.UserDatabase;
-import com.example.passwordwallet.Fragments.ChangePasswordDialogFragment;
-import com.example.passwordwallet.crypto.HashFunctions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.passwordwallet.DAO.Password;
+import com.example.passwordwallet.DAO.User;
+import com.example.passwordwallet.DAO.UserDatabase;
+import com.example.passwordwallet.Fragments.ChangePasswordDialogFragment;
+import com.example.passwordwallet.crypto.HashFunctions;
 import com.example.passwordwallet.databinding.ActivityContentBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ContentActivity extends AppCompatActivity implements ChangePasswordDialogFragment.ChangePasswordDialogListener {
@@ -48,6 +44,8 @@ public class ContentActivity extends AppCompatActivity implements ChangePassword
         Intent intent = getIntent();
         userNickname = intent.getStringExtra("nick");
         passwordHash = intent.getStringExtra("passwd");
+        String lastLogin = intent.getStringExtra("successfulLogin");
+        String lastFailedLogin = intent.getStringExtra("unsuccessfulLogin");
 
         binding = ActivityContentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -76,6 +74,7 @@ public class ContentActivity extends AppCompatActivity implements ChangePassword
                 navController.navigate(R.id.action_passwordFragment_to_addNewPasswordFragment, bundle);
             }
         });
+        Snackbar.make(binding.getRoot(),"Last successful login: \n" + lastLogin + "\nLast unsuccessful login: \n" + lastFailedLogin , Snackbar.LENGTH_LONG).setTextMaxLines(8).show();
     }
 
     @Override

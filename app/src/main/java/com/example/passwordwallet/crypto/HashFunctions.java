@@ -69,7 +69,7 @@ public class HashFunctions {
             Cipher c = Cipher.getInstance(ALGO);
             byte[] iv = new byte[c.getBlockSize()];
             IvParameterSpec ivParams = new IvParameterSpec(iv);
-            c.init(Cipher.ENCRYPT_MODE, key, ivParams);
+            c.init(Cipher.ENCRYPT_MODE, key);
             byte[] encVal = c.doFinal(data.getBytes());
             return Base64.getEncoder().encodeToString(encVal);
         }
@@ -78,7 +78,7 @@ public class HashFunctions {
             Cipher c = Cipher.getInstance(ALGO);
             byte[] ivByte = new byte[c.getBlockSize()];
             IvParameterSpec ivParamsSpec = new IvParameterSpec(ivByte);
-            c.init(Cipher.DECRYPT_MODE, key,ivParamsSpec);
+            c.init(Cipher.DECRYPT_MODE, key);
             byte[] decodedValue = Base64.getDecoder().decode(encryptedData);
             byte[] decValue = c.doFinal(decodedValue);
             return new String(decValue);
